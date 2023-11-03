@@ -19,7 +19,7 @@ paths:
           schema:
             type: string
         - in: query
-          name: releaseDate
+          name: intervals
           description: Filter return books by intervals of dates of the releaseDate
           required: false
           schema:
