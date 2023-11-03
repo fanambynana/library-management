@@ -1,7 +1,7 @@
 # library-management
 
 API that manages library (Books and Authors):
-- GET : show all or filtered element(s) by name and by release date for the Book(s), ordered by updated time
+- GET : show all or filtered element(s) by name and by intervals of dates of the release date for the book(s), ordered by updated time
 - ADD : create new element in the library
 - UPDATE : modify some informations about the element(s)
 - DELETE : remove element in the library
