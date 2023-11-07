@@ -30,7 +30,6 @@ paths:
           schema:
             type: string
             format: date
-        #TODO3: add parameter to filter books by intervals of dates of the releaseDate
       responses:
         200:
           description: The list of filtered books
@@ -137,15 +136,13 @@ paths:
           required: true
           schema:
             type: string
-            #type: integer
       responses:
         '200':
           description: The author deleted
         '400':
           description: Invalid author ID supplied
         '404':
-          description: Author not found    
-  #TODO2: complete GET (can be filtered by name) - PUT - DELETE
+          description: Author not found
 components:
   schemas:
     Book:
@@ -157,8 +154,6 @@ components:
           type: string
         author:
           $ref: '#/components/schemas/Author'
-          #TODO1: set it as a component with properties : id, name, sex (M or F)
-          #type: string
         pageNumbers:
           type: integer
         topic:
@@ -178,9 +173,11 @@ components:
         name:
           type: string
         sex:
-          type: string
-          enum:
-            - M
-            - F 
+          $ref: "#/components/schemas/Sex"
       required:
-        - id     
+        - id
+    Sex:
+      type: string
+      enum:
+        - M
+        - F   
