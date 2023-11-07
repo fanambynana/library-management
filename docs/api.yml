@@ -148,8 +148,25 @@ paths:
   #TODO2: complete GET (can be filtered by name) - PUT - DELETE
 components:
   schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sex:
+          type: string
+          enum:
+            - M
+            - F 
+      required:
+        - id
+        - authorType
     Book:
       type: object
+      discriminator:
+        propertyName: bookType
       properties:
         id:
           type: string
@@ -170,35 +187,18 @@ components:
         releaseDate:
           type: string
           format: date
-    Author:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        sex:
-          type: string
-          enum:
-            - M
-            - F 
       required:
-        - id
+        - "bookType"    
+    # ... used as the discriminator value
     CrupdateBook:
-      type: object
-      properties:
-        id:
-          type: integer
-        bookName:
-          type: string
-        pageNumbers:
-          type: string
-        topic:
-          type: string
-          enum:
-            - ROMANCE
-            - COMEDY
-            - OTHER
-        releaseDate:
-          type: string
-          format: date
+      description: A representation
+      allOf:
+        - $ref: '#/components/schemas/Book'
+        - type: object
+
+          # properties : add others properties + required
+          properties:
+            testOne:
+              type: string
+          required:
+            - "testOne"
