@@ -5,9 +5,14 @@ info:
   description: STD22006
 servers:
   - url: https://library.com
+tags:
+  - name: Books
+  - name: Authors
 paths:
   /books:
     get:
+      tags:
+        - Books
       summary: Get all books
       description: The returned books are ordered by updated datetime.
       operationId: getBooks
@@ -36,6 +41,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
     put:
+      tags:
+        - Books
       summary: Create or update a list of books
       operationId: crupdateBooks
       requestBody:
@@ -56,6 +63,8 @@ paths:
                   $ref: '#/components/schemas/Book'
   /books/{bookId}:
     delete:
+      tags:
+        - Books
       summary: Delete a book
       operationId: deleteBook
       parameters:
@@ -72,13 +81,15 @@ paths:
 
   /authors:
     get:
+      tags:
+        - Authors
       summary: Get all authors
       description: The returned author are ordered by updated datetime.
       operationId: getAuthors
       parameters:
         - in: query
           name: authorName
-          description: Filter return author by given name
+          description: Filter returned author by given name. If not provided, then list is not filterd.
           required: false
           schema:
             type: string
@@ -92,6 +103,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Author'
     put:
+      tags:
+        - Authors
       summary: Create or update a list of authors
       operationId: crupdateAuthors
       requestBody:
@@ -110,17 +123,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+   # TODO(Vidéo): Delete many authors               
   /author/{authorId}:
     delete:
+      tags:
+        - Authors
       summary: Delete an author
       operationId: deleteAuthor
       parameters:
         - name: authorId
+          description: Author identifier to be deleted
           in: path
           required: true
           schema:
-            type: integer
+            type: string
+            #type: integer
       responses:
+        '200':
+          description: The author deleted
         '400':
           description: Invalid author ID supplied
         '404':
@@ -161,4 +181,6 @@ components:
           type: string
           enum:
             - M
-            - F      
+            - F 
+      required:
+        - id     
