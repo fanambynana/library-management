@@ -38,7 +38,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
+                  $ref: "#/components/schemas/Book"
     put:
       tags:
         - Books
@@ -50,7 +50,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Book'
+                $ref: "#/components/schemas/Book"
       responses:
         200:
           description: The list of created or updated books
@@ -59,7 +59,33 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
+                  $ref: "#/components/schemas/Book"
+    # Delete many books
+    delete:
+      tags:
+        - "Books"
+      summary: Delete one or many book(s)
+      operationId: deleteManyBooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: The book deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+        '400':
+          description: Invalid book ID supplied
+        '404':
+          description: Book not found              
   /books/{bookId}:
     delete:
       tags:
@@ -88,7 +114,9 @@ paths:
       parameters:
         - in: query
           name: authorName
-          description: Filter returned author by given name. If not provided, then list is not filterd.
+          description: |
+            Filter returned author by given name.
+            If not provided, then list is not filterd.
           required: false
           schema:
             type: string
@@ -100,7 +128,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Author'
+                  $ref: "#/components/schemas/Author"
     put:
       tags:
         - Authors
@@ -112,7 +140,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Author'
+                $ref: "#/components/schemas/Author"
       responses:
         200:
           description: The list of created or updated authors
@@ -121,8 +149,33 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Author'
-   # TODO(Vidéo): Delete many authors               
+                  $ref: "#/components/schemas/Author"
+   # TODO(Vidéo): Delete many authors
+    delete:
+      tags:
+        - "Authors"
+      summary: Delete one or many authors
+      operationId: deleteManyAuthors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: The author deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
+        '400':
+          description: Invalid author ID supplied
+        '404':
+          description: Author not found
   /author/{authorId}:
     delete:
       tags:
@@ -139,6 +192,10 @@ paths:
       responses:
         '200':
           description: The author deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
         '400':
           description: Invalid author ID supplied
         '404':
@@ -153,7 +210,7 @@ components:
         bookName:
           type: string
         author:
-          $ref: '#/components/schemas/Author'
+          $ref: "#/components/schemas/Author"
         pageNumbers:
           type: integer
         topic:
