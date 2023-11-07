@@ -30,17 +30,15 @@ paths:
           schema:
             type: string
             format: date
-        #TODO3: add parameter to filter books by intervals of dates of the releaseDate
       responses:
-        200:
+        '200':
           description: The list of filtered books
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
-      # /books/{id}/authors/{id}            
+                  $ref: '#/components/schemas/Book'           
     put:
       tags:
         - Books
@@ -54,7 +52,7 @@ paths:
               items:
                 $ref: '#/components/schemas/CrupdateBook'
       responses:
-        200:
+        '200':
           description: The list of created or updated books
           content:
             application/json:
@@ -75,6 +73,8 @@ paths:
           schema:
             type: integer
       responses:
+        '200':
+          description: The book deleted
         '400':
           description: Invalid book ID supplied
         '404':
@@ -95,7 +95,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: The list of filtered authors
           content:
             application/json:
@@ -116,15 +116,14 @@ paths:
               items:
                 $ref: '#/components/schemas/Author'
       responses:
-        200:
+        '200':
           description: The list of created or updated authors
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Author'
-   # TODO(Vidéo): Delete many authors               
+                  $ref: '#/components/schemas/Author'               
   /author/{authorId}:
     delete:
       tags:
@@ -138,15 +137,13 @@ paths:
           required: true
           schema:
             type: string
-            #type: integer
       responses:
         '200':
           description: The author deleted
         '400':
           description: Invalid author ID supplied
         '404':
-          description: Author not found    
-  #TODO2: complete GET (can be filtered by name) - PUT - DELETE
+          description: Author not found
 components:
   schemas:
     Author:
@@ -157,9 +154,7 @@ components:
         name:
           type: string
         sex:
-          $ref: '#/components/schemas/Sex'             
-      required:
-        - id
+          $ref: '#/components/schemas/Sex'
     Sex:
       type: string
       enum:
@@ -167,39 +162,26 @@ components:
         - F
     Book:
       type: object
-      discriminator:
-        propertyName: bookType
+      allOf:
+        - $ref: '#/components/schemas/CrupdateBook'
+      properties:
+        author:
+          $ref: '#/components/schemas/Author'
+    CrupdateBook:
+      type: object
       properties:
         id:
           type: string
         bookName:
           type: string
-        author:
-          $ref: '#/components/schemas/Author'
-          #TODO1: set it as a component with properties : id, name, sex (M or F)
-          #type: string
         pageNumbers:
-          type: integer
+          type: string
         topic:
           type: string
           enum:
             - ROMANCE
             - COMEDY
-            - OTHER
+            - OTHER)
         releaseDate:
           type: string
           format: date
-
-    # ... used as the discriminator value
-    CrupdateBook:
-      description: A representation
-      allOf:
-        - $ref: '#/components/schemas/Book'
-        - type: object
-
-          # properties: add others properties + required
-          properties:
-            testOne:
-              type: string
-          required:
-            - "testOne"
