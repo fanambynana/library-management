@@ -155,6 +155,13 @@ paths:
       summary: Import book(s)
       description: Import a list of books
       operationId: importBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CrupdateBook"
       responses:
         '200':
           description: The list of imported books
@@ -246,7 +253,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Author"
-  /author/{authorId}:
+  /authors/{authorId}:
     delete:
       tags:
         - Authors
@@ -270,6 +277,28 @@ paths:
           description: Invalid author ID supplied
         '404':
           description: Author not found
+  /authors/import:
+    post:
+      summary: Import author(s)
+      description: Import a list of authors
+      operationId: importAuthor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Author"
+      responses:
+        '200':
+          description: The list of imported authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
+
 components:
   schemas:
     Author:
