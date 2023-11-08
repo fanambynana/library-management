@@ -67,6 +67,7 @@ paths:
       summary: Delete one or many book(s)
       operationId: deleteManyBooks
       requestBody:
+        description: The list of book's ID
         content:
           application/json:
             schema:
@@ -153,6 +154,7 @@ paths:
       summary: Delete one or many authors
       operationId: deleteManyAuthors
       requestBody:
+        description: The list of author's ID
         content:
           application/json:
             schema:
