@@ -309,6 +309,11 @@ components:
       properties:
         code:
           type: integer
+          enum:
+            - 200
+            - 400
+            - 403
+            - 500
         message:
           type: string
     Body:
@@ -316,6 +321,11 @@ components:
       properties:
         returned:
           type: object
+    Response:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/Status"
+        - $ref: "#/components/schemas/Body"
   parameters:
     queryPagination:
       name: queryPgParam
