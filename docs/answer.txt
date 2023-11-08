@@ -4,4 +4,9 @@ Réponses TD2:
 i:
     Car c'est une genre de jointure entre le Book et le Author.
 ii:
-    Dans le cas où on veut afficher ou créer un Book avec son Author.    
+    Dans le cas où on veut afficher ou créer un Book avec son Author.
+
+3/a:
+    Pour faciliter l'exploration des pages et l’indexation de contenu.
+
+      
