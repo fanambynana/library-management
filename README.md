@@ -1,5 +1,5 @@
 # library-management
-#### *1.0.0*
+#### *v1.0.0*
 
 API that manages library (Books and Authors):
 - GET : show all or filtered element(s) by name and by intervals of dates of the release date for the book(s), ordered by updated time
