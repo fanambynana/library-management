@@ -304,3 +304,18 @@ components:
           type: string
         authorId:
           type: string
+  parameters:
+    queryPagination:
+      name: queryPgParam
+      in: query
+      required: false
+      schema:
+        type: string  
+    pathPagination:
+      name: pathPgParam
+      in: path
+      required: true
+      schema:
+        type: string
+    
+    
