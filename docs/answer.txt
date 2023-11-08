@@ -1,0 +1,7 @@
+Réponses TD2:
+
+2/b/
+i:
+    Car c'est une genre de jointure entre le Book et le Author.
+ii:
+    Dans le cas où on veut afficher ou créer un Book avec son Author.    
