@@ -78,7 +78,31 @@ paths:
         '400':
           description: Invalid book ID supplied
         '404':
-          description: Book not found   
+          description: Book not found
+  /books/{bookId}/authors/{authorId}:
+    put:
+      tags:
+        - "Books"
+      summary: Moify the book's author
+      operationId: modifyBookAuthor
+      parameters:
+        - name: bookId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The book modified with their author
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
 
   /authors:
     get:
