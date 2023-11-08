@@ -75,17 +75,13 @@ paths:
                 type: string
       responses:
         '200':
-          description: The book deleted
+          description: The book(s) deleted
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Book"
-        '400':
-          description: Invalid book ID supplied
-        '404':
-          description: Book not found              
+                  $ref: "#/components/schemas/Book"             
   /books/{bookId}:
     delete:
       tags:
@@ -165,17 +161,13 @@ paths:
                 type: string
       responses:
         '200':
-          description: The author deleted
+          description: The author(s) deleted
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: "#/components/schemas/Author"
-        '400':
-          description: Invalid author ID supplied
-        '404':
-          description: Author not found
   /author/{authorId}:
     delete:
       tags:
