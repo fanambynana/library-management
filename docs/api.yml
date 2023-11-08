@@ -152,6 +152,8 @@ paths:
           description: The book's author updated
   /books/import:
     post:
+      tags:
+        - "Books"
       summary: Import book(s)
       description: Import a list of books
       operationId: importBook
@@ -279,6 +281,8 @@ paths:
           description: Author not found
   /authors/import:
     post:
+      tags:
+        - "Authors"
       summary: Import author(s)
       description: Import a list of authors
       operationId: importAuthor
