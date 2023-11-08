@@ -304,6 +304,18 @@ components:
           type: string
         authorId:
           type: string
+    Status:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    Body:
+      type: object
+      properties:
+        returned:
+          type: object
   parameters:
     queryPagination:
       name: queryPgParam
@@ -317,5 +329,8 @@ components:
       required: true
       schema:
         type: string
+
+
     
+
     
