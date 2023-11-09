@@ -138,6 +138,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Book"
+  /book/page/{pageNumber}/size/{pageSize}:
+    get:
+      tags:
+        - "Books"
+      summary: "The returned books are paginated by page number and page size"   
+      operationId: getPaginatedBooks
+      parameters:
+        - name: pageNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: path
+          required: true
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: "The list of filtered and paginated books"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"               
   /books/authors/:
     put:
       tags:
