@@ -407,13 +407,28 @@ components:
       in: query
       required: false
       schema:
-        type: string  
+        type: object
+        properties:
+          pageNumber:
+            type: integer
+            default: 1
+          pageSize:
+            type: integer
+            default: 50
     pathPagination:
       name: pathPgParam
       in: path
       required: true
       schema:
-        type: string
+        type: object
+        properties:
+          pageNumber:
+            type: integer
+            default: 1
+          pageSize:
+            type: integer
+            default: 50
+
 
 
     
