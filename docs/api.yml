@@ -401,7 +401,49 @@ components:
       required: true
       schema:
         type: integer
-        default: 50   
+        default: 50
+  responses:
+    '400':
+      description: Bad request exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Response'
+          example:
+            code: 400
+            message: Bad request error
+            returned: null
+    '403':
+      description: Forbidden exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Response'
+          example:
+            code: 403
+            message: Forbidden error
+            returned: null
+    '404':
+      description: Not found exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Response'
+          example:
+            code: 404
+            message: Not found error
+            returned: null
+    '500':
+      description: Internal server error exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Response'
+          example:
+            code: 500
+            message: Internal server error
+            returned: null              
+        
 
 
 
