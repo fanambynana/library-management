@@ -325,7 +325,7 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
         name:
           type: string
         sex:
@@ -389,6 +389,27 @@ components:
       allOf:
         - $ref: "#/components/schemas/Status"
         - $ref: "#/components/schemas/Body"
+    ImportAuthor:
+      type: array
+      items:
+        type: object
+        properties:
+          authorName: 
+            $ref: "#/components/schemas/Author/properties/name"
+          sex:
+            $ref: "#/components/schemas/Author/properties/id"
+    BooksImport:
+      type: array
+      items:
+        type: object
+        properties:
+          bookName:
+            $ref: "#/components/schemas/CrupdateBook/properties/bookName"
+          author: 
+            $ref: "#/components/schemas/Author"
+          topic:
+            $ref: "#/components/schemas/CrupdateBook/properties/topic"
+
   parameters:
     queryPagination:
       name: queryPgParam
