@@ -398,7 +398,7 @@ components:
             $ref: "#/components/schemas/Author/properties/name"
           sex:
             $ref: "#/components/schemas/Author/properties/id"
-    BooksImport:
+    ImportBook:
       type: array
       items:
         type: object
