@@ -23,25 +23,7 @@ paths:
           required: false
           schema:
             type: string
-        - in: query
-          name: intervals
-          description: Filter return books by intervals of dates of the releaseDate
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: page
-          required: false
-          schema:
-            type: integer
-            default: 1
-        - in: query
-          name: pageSize
-          required: false
-          schema:
-            type: integer
-            default: 50   
+        - $ref: "#/components/parameters/queryPagination" 
       responses:
         '200':
           description: The list of filtered books
@@ -274,18 +256,8 @@ paths:
       summary: "The returned authors are paginated by page number and page size"   
       operationId: getPaginatedAuthors
       parameters:
-        - name: pageNumber
-          in: path
-          required: true
-          schema:
-            type: integer
-            default: 1
-        - name: pageSize
-          in: path
-          required: true
-          schema:
-            type: integer
-            default: 50
+        - $ref: "#/components/parameters/pathPageNumber"
+        - $ref: "#/components/parameters/pathPageSize"
       responses:
         '200':
           description: "The list of filtered and paginated authors"
