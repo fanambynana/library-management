@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Library API
-  version: 1.2.0
+  version: 1.3.0
   description: STD22006
 servers:
   - url: https://library.com
@@ -246,7 +246,7 @@ paths:
         '404':          
           $ref: '#/components/responses/404'
         '500':
-          $ref: '#/components/responses/404'         
+          $ref: '#/components/responses/500'         
   /authors/{authorId}:
     delete:
       tags:
@@ -271,8 +271,8 @@ paths:
           $ref: '#/components/responses/400'
         '404':
           $ref: '#/components/responses/404'
-          '500':
-            $ref: '#/components/responses/500'
+        '500':
+          $ref: '#/components/responses/500'
   /authors/page/{pageNumber}/size/{pageSize}:
     get:
       tags:

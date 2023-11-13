@@ -1,5 +1,5 @@
 # library-management
-#### *v1.2.0*
+#### *v1.3.0*
 
 API that manages library (Books and Authors):
 - GET : show all or filtered element(s) by name and by intervals of dates of the release date for the book(s), ordered by updated time
@@ -9,7 +9,7 @@ API that manages library (Books and Authors):
 
 Link :
 ```
-https://petstore.swagger.io/?url=https://raw.githubusercontent.com/fanambynana/library-management/oas-td3-std22006/docs/api.yml
+https://petstore.swagger.io/?url=https://raw.githubusercontent.com/fanambynana/library-management/oas-td4-std22006-and-std22045/docs/api.yml
 ```
 ---
 ###### Copyright 2023, Fanambinantsoa ANDRIAMPARANTINA
