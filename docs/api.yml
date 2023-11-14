@@ -400,7 +400,7 @@ components:
           topic:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
-    ResponseTemplate:
+    ResponseBodyTemplate:
       type: object
       properties:
         status:
@@ -413,27 +413,18 @@ components:
                 - 400
                 - 403
                 - 500
+              example: 200
             message:
               type: string
+              example: OK
         body:
           type: object
 
     BookListBody:
       type: object
       allOf:
-        - $ref: '#/components/schemas/ResponseTemplate'
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
       properties:
-        status:
-          type: object
-          properties:
-            code:
-              type: integer
-              enum:
-                - 200
-            message:
-              type: string
-              enum:
-                - OK
         body:
           type: array
           items:
@@ -441,7 +432,7 @@ components:
     BadRequestBody:
       type: object
       allOf:
-        - $ref: '#/components/schemas/ResponseTemplate'
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
       example:
         status:
           code: 400
@@ -450,7 +441,7 @@ components:
     ForbiddenBody:
       type: object
       allOf:
-        - $ref: '#/components/schemas/ResponseTemplate'
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
       example:
         status:
           code: 403
@@ -459,7 +450,7 @@ components:
     NotFoundBody:
       type: object
       allOf:
-        - $ref: '#/components/schemas/ResponseTemplate'
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
       example:
         status:
           code: 404
@@ -468,7 +459,7 @@ components:
     InternalServerErrorBody:
       type:  object
       allOf:
-        - $ref: '#/components/schemas/ResponseTemplate'
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
       example:
         status:
           code: 500
