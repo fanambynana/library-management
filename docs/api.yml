@@ -61,13 +61,7 @@ paths:
                 $ref: "#/components/schemas/CrupdateBook"
       responses:
         '200':
-          description: The list of created or updated books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'          
     # Delete many books
@@ -509,7 +503,7 @@ components:
         default: 5
   responses:
     BookList_200:
-      description: The list of  books
+      description: The list of books
       content:
         application/json:
           schema:
