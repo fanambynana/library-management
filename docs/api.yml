@@ -44,13 +44,7 @@ paths:
         - $ref: "#/components/parameters/queryPagination" 
       responses:
         '200':
-          description: The list of filtered books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/BookList_200'
         '500':          
           $ref: '#/components/responses/500'          
     put:
@@ -374,7 +368,7 @@ components:
           enum:
             - ROMANCE
             - COMEDY
-            - OTHER)
+            - OTHER
         releaseDate:
           type: string
           format: date
@@ -385,28 +379,6 @@ components:
           type: string
         authorId:
           type: string
-    Status:
-      type: object
-      properties:
-        code:
-          type: integer
-          enum:
-            - 200
-            - 400
-            - 403
-            - 500
-        message:
-          type: string
-    Body:
-      type: object
-      properties:
-        returned:
-          type: object
-    Response:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/Status"
-        - $ref: "#/components/schemas/Body"
     ImportAuthor:
       type: array
       items:
@@ -428,6 +400,81 @@ components:
           topic:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
+    ResponseTemplate:
+      type: object
+      properties:
+        status:
+          type: object
+          properties:
+            code:
+              type: integer
+              enum:
+                - 200
+                - 400
+                - 403
+                - 500
+            message:
+              type: string
+        body:
+          type: object
+
+    BookListBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseTemplate'
+      properties:
+        status:
+          type: object
+          properties:
+            code:
+              type: integer
+              enum:
+                - 200
+            message:
+              type: string
+              enum:
+                - OK
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+    BadRequestBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseTemplate'
+      example:
+        status:
+          code: 400
+          message: Bad request error
+        body: {}          
+    ForbiddenBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseTemplate'
+      example:
+        status:
+          code: 403
+          message: Forbidden
+        body: {}
+    NotFoundBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseTemplate'
+      example:
+        status:
+          code: 404
+          message: Not found
+        body: {}
+    InternalServerErrorBody:
+      type:  object
+      allOf:
+        - $ref: '#/components/schemas/ResponseTemplate'
+      example:
+        status:
+          code: 500
+          message: Internal server error
+        body: {}
+      
   parameters:
     queryPagination:
       name: queryPgParam
@@ -468,49 +515,39 @@ components:
       required: true
       schema:
         type: integer
-        default: 50
+        default: 5
   responses:
+    BookList_200:
+      description: The list of  books
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookListBody'
     '400':
       description: Bad request exception
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Response'
-          example:
-            code: 400
-            message: Bad request error
-            returned: null
+            $ref: '#/components/schemas/BadRequestBody'
     '403':
       description: Forbidden exception
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Response'
-          example:
-            code: 403
-            message: Forbidden error
-            returned: null
+            $ref: '#/components/schemas/ForbiddenBody'
     '404':
       description: Not found exception
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Response'
-          example:
-            code: 404
-            message: Not found error
-            returned: null
+            $ref: '#/components/schemas/NotFoundBody'
     '500':
       description: Internal server error exception
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Response'
-          example:
-            code: 500
-            message: Internal server error
-            returned: null              
-        
+            $ref: '#/components/schemas/InternalServerErrorBody'
+           
 
 
 
