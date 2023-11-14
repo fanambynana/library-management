@@ -23,6 +23,24 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: releaseDateMin
+          description: |
+            If `releaseDateMax` is not provided, `releaseDateMin` is ignored,
+            `releaseDateMin` can not be after `releaseDateMax`
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: releaseDateMax
+          description: |
+            If `releaseDateMin` is not provided, `releaseDateMax` is ignored.
+            `releaseDateMax` can not be before `releaseDateMin`
+          required: false
+          schema:
+            type: string
+            format: date    
         - $ref: "#/components/parameters/queryPagination" 
       responses:
         '200':
