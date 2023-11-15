@@ -398,6 +398,17 @@ components:
           topic:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
+# --- Visitor ---
+    Visitor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+
 # --- Response ---
     ResponseBodyTemplate:
       type: object
