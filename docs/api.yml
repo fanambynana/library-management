@@ -327,6 +327,8 @@ paths:
 
 components:
   schemas:
+
+# --- Author ---
     Author:
       type: object
       properties:
@@ -341,6 +343,17 @@ components:
       enum:
         - M
         - F
+    ImportAuthor:
+      type: array
+      items:
+        type: object
+        properties:
+          authorName: 
+            $ref: "#/components/schemas/Author/properties/name"
+          sex:
+            $ref: "#/components/schemas/Author/properties/id"
+
+# --- Book ---
     Book:
       type: object
       allOf:
@@ -373,15 +386,6 @@ components:
           type: string
         authorId:
           type: string
-    ImportAuthor:
-      type: array
-      items:
-        type: object
-        properties:
-          authorName: 
-            $ref: "#/components/schemas/Author/properties/name"
-          sex:
-            $ref: "#/components/schemas/Author/properties/id"
     ImportBook:
       type: array
       items:
@@ -394,6 +398,7 @@ components:
           topic:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
+# --- Response ---
     ResponseBodyTemplate:
       type: object
       properties:
