@@ -215,7 +215,19 @@ paths:
         '400':
           $ref: '#/components/responses/400'
         '500':
-          $ref: '#/components/responses/500'    
+          $ref: '#/components/responses/500'
+  /books/borrowed:
+    get:
+      tags:
+        - "Books"
+      summary: Get all borrowed books
+      description: The books are ordered by updated datetime.
+      operationId: getBorrowedBooks
+      responses:
+        '200':
+          $ref: '#/components/responses/BookList_200'
+        '500':
+          $ref: '#/components/responses/500'
 
   /authors:
     get:
@@ -364,7 +376,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Author"
         '500':
-          $ref: '#/components/responses/500'          
+          $ref: '#/components/responses/500'       
 
 components:
   schemas:
