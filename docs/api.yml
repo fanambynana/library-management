@@ -513,6 +513,21 @@ components:
           type: string
         reference:
           type: string
+    VisitorActivity:
+        type: object
+        properties:
+          visitorId:
+            type: string
+          bookId:
+            type: string
+          activityType:
+            type: string
+            enum:
+              - borrow
+              - return
+          activityDate:
+            type: string
+            format: date
 
 # --- Response ---
     ResponseBodyTemplate:
