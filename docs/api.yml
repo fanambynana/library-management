@@ -755,6 +755,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/InternalServerErrorBody'
+  securitySchemes:
+      authorization:
+        type: oauth2
+        flows:
+          clientCredentials:
+            tokenUrl: https://auth.example.com/token
+            refreshUrl: https://auth.example.com/refresh
+            scopes:
+              read: Allows read operations
+              write: Allows write operations
+              
+          implicit:
+            authorizationUrl: https://auth.example.com/authorize
+            refreshUrl: https://auth.example.com/refresh
+            scopes:
+              read: Allows read operations | For anyone (Administrator and Visitor)
+              write: Allows write operations | For Administrator only          
            
 
 
