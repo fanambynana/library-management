@@ -170,7 +170,7 @@ paths:
   /books/borrow:
     put:
       tags:
-        - "Visitors"
+        - "Books"
       summary: Borrow book(s)
       operationId: borrowBook
       requestBody:
@@ -190,7 +190,7 @@ paths:
   /books/return:
     put:
       tags:
-        - "Visitors"
+        - "Books"
       summary: Return book(s)
       operationId: returnBook
       requestBody:
@@ -389,7 +389,19 @@ paths:
         '400':
           $ref: '#/components/responses/400'        
         '500':
-          $ref: '#/components/responses/500'            
+          $ref: '#/components/responses/500'
+  /visitors/{visitorId}/borrowed:
+    get:
+      tags:
+        - "Visitors"
+      summary: Get all books borrowed by the visitor
+      description: The returned book are ordered by borrowed datetime.
+      operationId: getVisitorBorrowedBook
+      responses:
+        '200':
+          $ref: '#/components/responses/BookList_200'
+        '500':
+          $ref: '#/components/responses/500'  
 
 components:
   schemas:
