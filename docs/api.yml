@@ -406,7 +406,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Visitor'
         '500':
-          $ref: '#/components/responses/500'        
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - "Visitors"
+      summary: Create or update visitor(s)
+      operationId: crupdateVisitors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Visitor'
+      responses:
+        '200':
+          description: The list of visitors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visitor'
+        '500':
+          $ref: '#/components/responses/500'            
 
 components:
   schemas:
