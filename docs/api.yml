@@ -183,7 +183,7 @@ paths:
       summary: Borrow book(s)
       operationId: borrowBook
       requestBody:
-        description: The list of book's ID to borrow and visitro's ID
+        description: The list of book's ID to borrow and visitor's ID
         content:
           application/json:
             schema:
@@ -200,10 +200,10 @@ paths:
     put:
       tags:
         - "Visitors"
-      summary: Borrow book(s)
-      operationId: borrowBook
+      summary: Return book(s)
+      operationId: returnBook
       requestBody:
-        description: The list of book's ID to borrow and visitro's ID
+        description: The list of book's ID to return and visitor's ID
         content:
           application/json:
             schema:
