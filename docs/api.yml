@@ -8,6 +8,7 @@ servers:
 tags:
   - name: Books
   - name: Authors
+  - name: Visitors
 paths:
   /books:
     get:
@@ -174,8 +175,34 @@ paths:
                 items:
                   $ref: "#/components/schemas/Book"
         '500':
-          $ref: '#/components/responses/500'          
-                
+          $ref: '#/components/responses/500'
+  /books/borrow:
+    put:
+      tags:
+        - "Visitors"
+      summary: Borrow book(s)
+      operationId: borrowBook
+      requestBody:
+        description: The list of book's ID to borrow and visitro's ID
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      parameters:
+        - name: VisitorId
+          in: query
+          required: true
+          description: The ID of the Visitor to borrow book(s).
+          schema:
+            type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/BookList_200'
+        '400':
+          $ref: '#/components/responses/400'  
+        
+
   /authors:
     get:
       tags:
@@ -397,6 +424,19 @@ components:
             $ref: "#/components/schemas/Author"
           topic:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
+
+# --- Book Borrow ---
+    BookBorrow:
+      type: object
+      properties:
+        id:
+          type: string
+        bookIdList:
+          type: array
+          items:
+            type: string
+        visitorId:
+          type: string
 
 # --- Visitor ---
     Visitor:
