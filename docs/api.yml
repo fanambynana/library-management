@@ -348,7 +348,8 @@ paths:
     get:
       tags:
         - "Authors"
-      summary: "The returned authors are paginated by page number and page size"   
+      summary: Get all authors
+      description: "The returned authors are paginated by page number and page size"   
       operationId: getPaginatedAuthors
       parameters:
         - $ref: "#/components/parameters/pathPageNumber"
@@ -389,6 +390,23 @@ paths:
                   $ref: "#/components/schemas/Author"
         '500':
           $ref: '#/components/responses/500'       
+
+  /visitors:
+    get:
+      tags:
+        - "Visitors"
+      summary: Get all visitors
+      description: The returned visitors are ordered by updated datetime.
+      operationId: getVisitors
+      responses:
+        '200':
+          description: The list of visitors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visitor'
+        '500':
+          $ref: '#/components/responses/500'        
 
 components:
   schemas:
