@@ -210,7 +210,7 @@ paths:
               $ref: '#/components/schemas/BorrowReturnBook'
       responses:
         '200':
-        # Return the list of book to borrow
+        # Return the list of book to return
           $ref: '#/components/responses/BookList_200'
         '400':
           $ref: '#/components/responses/400'
