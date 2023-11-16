@@ -399,9 +399,23 @@ paths:
       operationId: getVisitorBorrowedBook
       responses:
         '200':
+          # Return the list of borrowed book
           $ref: '#/components/responses/BookList_200'
         '500':
-          $ref: '#/components/responses/500'  
+          $ref: '#/components/responses/500'
+  /visitors/{visitorId}/returned:
+    get:
+      tags:
+        - "Visitors"
+      summary: Get all books returned by the visitor
+      description: The returned book are ordered by *returned datetime.
+      operationId: getVisitorReturnedBook
+      responses:
+        '200':
+          # Return the list of *returned book
+          $ref: '#/components/responses/BookList_200'
+        '500':
+          $ref: '#/components/responses/500'         
 
 components:
   schemas:
