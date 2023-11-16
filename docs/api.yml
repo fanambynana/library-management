@@ -187,7 +187,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/BorrowBook'
       parameters:
         - name: VisitorId
           in: query
@@ -426,7 +426,7 @@ components:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
 # --- Book Borrow ---
-    BookBorrow:
+    BorrowBook:
       type: object
       properties:
         id:
