@@ -366,11 +366,8 @@ paths:
       operationId: getVisitors
       responses:
         '200':
-          description: The list of visitors
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Visitor'
+          # Return the list of visitor
+          $ref: '#/components/responses/VisitorList_200'
         '500':
           $ref: '#/components/responses/500'
     put:
@@ -387,11 +384,8 @@ paths:
                 $ref: '#/components/schemas/Visitor'
       responses:
         '200':
-          description: The list of visitors
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Visitor'
+          # Return the list of created or updated visitor
+          $ref: '#/components/responses/VisitorList_200'
         '400':
           $ref: '#/components/responses/400'        
         '500':
