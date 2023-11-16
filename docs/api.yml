@@ -533,6 +533,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Author'
+    VisitorListBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Visitor'       
 
     BadRequestBody:
       type: object
@@ -625,6 +634,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AuthorListBody'
+    VisitorList_200:
+      description: The list of visitors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VisitorListBody'        
 
     '400':
       description: Bad request exception
