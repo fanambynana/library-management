@@ -397,6 +397,13 @@ paths:
       summary: Get all books borrowed by the visitor
       description: The returned book are ordered by borrowed datetime.
       operationId: getVisitorBorrowedBook
+      parameters:
+        - in: path
+          name: visitorId
+          description: ID of the visitor
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           # Return the list of borrowed book
@@ -415,7 +422,38 @@ paths:
           # Return the list of *returned book
           $ref: '#/components/responses/BookList_200'
         '500':
-          $ref: '#/components/responses/500'         
+          $ref: '#/components/responses/500'
+  /visitors/{visitorId}/activities:
+    get:
+      tags:
+        - Visitors
+      summary: Get visitor activities
+      operationId: getVisitorActivities
+      parameters:
+        - in: path
+          name: visitorId
+          description: ID of the visitor
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: startDate
+          description: Start date for filtering activities
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: endDate
+          description: End date for filtering activities
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        200:
+          # Return the list of visitor activities
+          $ref: '#/components/responses/VisitorActivitiesList_200'       
 
 components:
   schemas:
@@ -516,6 +554,8 @@ components:
     VisitorActivity:
         type: object
         properties:
+          id:
+            type: string
           visitorId:
             type: string
           bookId:
@@ -576,7 +616,16 @@ components:
         body:
           type: array
           items:
-            $ref: '#/components/schemas/Visitor'       
+            $ref: '#/components/schemas/Visitor'
+    VisitorActivitiesListBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisitorActivity'           
 
     BadRequestBody:
       type: object
@@ -674,7 +723,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VisitorListBody'        
+            $ref: '#/components/schemas/VisitorListBody'
+    VisitorActivitiesList_200:
+      description: The list of visitors activity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VisitorActivitiesListBody'                
 
     '400':
       description: Bad request exception
