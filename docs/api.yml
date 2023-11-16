@@ -45,6 +45,7 @@ paths:
         - $ref: "#/components/parameters/queryPagination" 
       responses:
         '200':
+          # Return the list of all books
           $ref: '#/components/responses/BookList_200'
         '500':          
           $ref: '#/components/responses/500'          
@@ -62,10 +63,10 @@ paths:
                 $ref: "#/components/schemas/CrupdateBook"
       responses:
         '200':
+          # Return the list of created or updated book
           $ref: '#/components/responses/BookList_200'
         '500':
-          $ref: '#/components/responses/500'          
-    # Delete many books
+          $ref: '#/components/responses/500'
     delete:
       tags:
         - "Books"
@@ -81,13 +82,8 @@ paths:
                 type: string
       responses:
         '200':
-          description: The book(s) deleted
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+          # Return the list of deleted book
+          $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/404'                     
   /books/{bookId}:
@@ -104,7 +100,8 @@ paths:
             type: integer
       responses:
         '200':
-          description: The book deleted
+          # Return the deleted book
+          $ref: '#/components/responses/BookList_200'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -130,17 +127,16 @@ paths:
             type: string
       responses:
         '200':
-          description: The book modified with their author
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Book"
+          # Return the list of book modified with their author
+          $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'                           
-  /books/authors/:
+  /books/authors:
     put:
       tags:
         - "Authors"
+      summary: Update book's author
+      operationId: updateBookAuthor
       requestBody:
         content:
           application/json:
@@ -148,7 +144,7 @@ paths:
               $ref: "#/components/schemas/UpdateBookAuthor"
       responses:
         '200':
-          description: The book's author updated
+          description: The updated book's author
         '500':
           $ref: '#/components/responses/500'  
   /books/import:
@@ -167,13 +163,8 @@ paths:
                 $ref: "#/components/schemas/CrupdateBook"
       responses:
         '200':
-          description: The list of imported books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+          # Return the list of imported books
+          $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'
   /books/borrow:
@@ -190,7 +181,7 @@ paths:
               $ref: '#/components/schemas/BorrowReturnBook'
       responses:
         '200':
-        # Return the list of book to borrow
+          # Return the list of book to borrow
           $ref: '#/components/responses/BookList_200'
         '400':
           $ref: '#/components/responses/400'
@@ -210,7 +201,7 @@ paths:
               $ref: '#/components/schemas/BorrowReturnBook'
       responses:
         '200':
-        # Return the list of book to return
+          # Return the list of book to return
           $ref: '#/components/responses/BookList_200'
         '400':
           $ref: '#/components/responses/400'
@@ -225,6 +216,7 @@ paths:
       operationId: getBorrowedBooks
       responses:
         '200':
+          # Return the list of borrowed book
           $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'
@@ -237,6 +229,7 @@ paths:
       operationId: getAvailableBooks
       responses:
         '200':
+          # Return the list of available book
           $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'      
