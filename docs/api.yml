@@ -188,19 +188,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BorrowBook'
-      parameters:
-        - name: VisitorId
-          in: query
-          required: true
-          description: The ID of the Visitor to borrow book(s).
-          schema:
-            type: string
-
       responses:
         '200':
+        # Return the list of book to borrow
           $ref: '#/components/responses/BookList_200'
         '400':
-          $ref: '#/components/responses/400'  
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
         
 
   /authors:
