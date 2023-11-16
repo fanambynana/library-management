@@ -558,6 +558,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Book'
+    AuthorListBody:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+
     BadRequestBody:
       type: object
       allOf:
@@ -643,6 +653,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BookListBody'
+    AuthorList_200:
+      description: The list of authors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorListBody'
+
     '400':
       description: Bad request exception
       content:
