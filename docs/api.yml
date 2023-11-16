@@ -221,13 +221,25 @@ paths:
       tags:
         - "Books"
       summary: Get all borrowed books
-      description: The books are ordered by updated datetime.
+      description: The returned books are ordered by updated datetime.
       operationId: getBorrowedBooks
       responses:
         '200':
           $ref: '#/components/responses/BookList_200'
         '500':
           $ref: '#/components/responses/500'
+  /books/available:
+    get:
+      tags:
+        - "Books"
+      summary: Get all available books
+      description: The returned books are ordered by updated datetime.
+      operationId: getAvailableBooks
+      responses:
+        '200':
+          $ref: '#/components/responses/BookList_200'
+        '500':
+          $ref: '#/components/responses/500'      
 
   /authors:
     get:
