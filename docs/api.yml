@@ -187,7 +187,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BorrowBook'
+              $ref: '#/components/schemas/BorrowReturnBook'
       responses:
         '200':
         # Return the list of book to borrow
@@ -196,7 +196,26 @@ paths:
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
-        
+  /books/return:
+    put:
+      tags:
+        - "Visitors"
+      summary: Borrow book(s)
+      operationId: borrowBook
+      requestBody:
+        description: The list of book's ID to borrow and visitro's ID
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowReturnBook'
+      responses:
+        '200':
+        # Return the list of book to borrow
+          $ref: '#/components/responses/BookList_200'
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'    
 
   /authors:
     get:
@@ -421,7 +440,7 @@ components:
             $ref: "#/components/schemas/CrupdateBook/properties/topic"
 
 # --- Book Borrow ---
-    BorrowBook:
+    BorrowReturnBook:
       type: object
       properties:
         id:
