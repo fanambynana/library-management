@@ -252,13 +252,8 @@ paths:
             type: string
       responses:
         '200':
-          description: The list of filtered authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+          # Return the list of filtered authors
+          $ref: '#/components/responses/AuthorList_200'
         '500':
           $ref: '#/components/responses/500'          
     put:
@@ -275,16 +270,12 @@ paths:
                 $ref: "#/components/schemas/Author"
       responses:
         '200':
-          description: The list of created or updated authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+          # Return the list of created or updated authors
+          $ref: '#/components/responses/AuthorList_200'
+        '400':
+          $ref: '#/components/responses/400' 
         '500':
-          $ref: '#/components/responses/500'        
-   # TODO(Vidéo): Delete many authors
+          $ref: '#/components/responses/500'
     delete:
       tags:
         - "Authors"
@@ -300,13 +291,8 @@ paths:
                 type: string
       responses:
         '200':
-          description: The author(s) deleted
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+          # Return the list of deleted author
+          $ref: '#/components/responses/AuthorList_200'
         '404':          
           $ref: '#/components/responses/404'
         '500':
@@ -326,11 +312,8 @@ paths:
             type: string
       responses:
         '200':
-          description: The author deleted
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Author"
+          # Return the author deleted
+          $ref: '#/components/responses/AuthorList_200'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -349,13 +332,8 @@ paths:
         - $ref: "#/components/parameters/pathPageSize"
       responses:
         '200':
-          description: "The list of filtered and paginated authors"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+          # Return the list of filtered and paginated authors
+          $ref: '#/components/responses/AuthorList_200'
         '500':
           $ref: '#/components/responses/500'               
   /authors/import:
@@ -374,13 +352,8 @@ paths:
                 $ref: "#/components/schemas/Author"
       responses:
         '200':
-          description: The list of imported authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+          # Return the list of imported authors
+          $ref: '#/components/responses/AuthorList_200'
         '500':
           $ref: '#/components/responses/500'       
 
